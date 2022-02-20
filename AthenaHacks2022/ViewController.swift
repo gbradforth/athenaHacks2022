@@ -1,10 +1,9 @@
-//
+
 //  ViewController.swift
 //  AthenaHacks2022
 //
 //  Created by Gwen Bradforth on 2/19/22.
 //
-
 import UIKit
 import MapKit
 import CoreLocation
@@ -19,6 +18,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         mapView.delegate = self
         checkLocationServices()
+        
         
         super.viewDidLoad()
         
@@ -45,16 +45,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
    
     
-    // MARK: - Core Location
-    //the code in this marked section is copied and modified from https://medium.com/swift-productions/create-a-map-show-users-location-xcode-12-swift-5-3-c5052949313f
-    
-    //needed to conform to CLLocationManagerDelegate protocol
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         mapView.centerToLocation(location)
         
-        //always save the user's updated location to Firebase
-        saveLocationToFirebase(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(
+          center: location.coordinate,
+          latitudinalMeters: 1000,
+          longitudinalMeters: 1000)
+        mapView.setCameraBoundary(
+          MKMapView.CameraBoundary(coordinateRegion: region),
+          animated: true)
+        
+        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 2000)
+        mapView.setCameraZoomRange(zoomRange, animated: true)
+
     }
       
     //check if user gave permission to access location info
@@ -97,9 +102,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func followUserLocation() {
         if let location = locationManager.location {
             mapView.centerToLocation(location)
-            
-            //always save the user's updated location to Firebase
-            saveLocationToFirebase(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         }
     }
       
@@ -113,48 +115,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest //more precise location, but tradeoff in draining battery
     }
-    
-    // MARK: - Helper Functions
-    
-    func setupListeners(){
-        //child added
-        usersRef.observe(.childAdded, with: {(snapshot) in
-            if let userData = snapshot.value as? NSDictionary{
-                // only add a new user if their id is NOT currently in the usersList
-                let id = userData["id"] as? String ?? ""
-                if self.usersList.getUserIndex(ided: id) == -1 { //returns -1 for id not found
-                    print("Child Added")
-                    self.usersList.addUserFromFirebaseData(userData)
-                }
-            }
-        })
-        
-        //child changed
-        usersRef.observe(.childChanged, with: {(snapshot) in
-            print("Child Changed")
-            if let userData = snapshot.value as? NSDictionary{
-                let id = userData["id"] as? String ?? ""
-                let latitude = userData["latitude"] as? Double ?? 0
-                let longitude = userData["longitude"] as? Double ?? 0
-                //find the user using id
-                let userIndex = self.usersList.getUserIndex(ided: id)
-                //update user's loc
-                self.usersList.changeUserLocation(index: userIndex, latitude: latitude, longitude: longitude)
-            }
-        })
-        
-        //child deleted
-        usersRef.observe(.childRemoved, with: {(snapshot) in
-            print("Child Removed")
-            if let userData = snapshot.value as? NSDictionary{
-                //find the user using id
-                let id = userData["id"] as? String ?? ""
-                let userIndex = self.usersList.getUserIndex(ided: id)
-                //remove user
-                self.usersList.removeUser(at: userIndex)
-            }
-        })
-    }
+
     
     func sendAlertWithSettingsButton(title: String, message: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -164,8 +125,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         alertController.addAction(settingsAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    //function adapted from https://stackoverflow.com/questions/28152526/how-do-i-open-phone-settings-when-a-button-is-clicked
+
     func goToSettings(action: UIAlertAction){
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
 
@@ -201,7 +161,6 @@ extension ViewController: MKMapViewDelegate {
         guard let annotation = annotation as? Player else {
             return nil
         }
-
         let identifier = "artwork"
         var view: MKMarkerAnnotationView
         // map view reuses annotation views that are no longer visible.
