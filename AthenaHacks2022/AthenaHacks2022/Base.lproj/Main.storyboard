@@ -1,62 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jd8-tx-ujH">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="dTW-MD-Wz8">
+            <objects>
+                <viewController id="jd8-tx-ujH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IGR-2S-xfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Load Screen" translatesAutoresizingMaskIntoConstraints="NO" id="MhK-d5-kOf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewN-UE-bie">
+                                <rect key="frame" x="242" y="759" width="126" height="49"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Join Game">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" red="0.21960784310000001" green="0.28627450980000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" id="8AF-Eq-Q1k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxZ-a2-F0Z">
+                                <rect key="frame" x="54" y="759" width="130" height="49"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="New Game">
+                                            <attributes>
+                                                <font key="NSFont" size="21" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" red="0.21960784310000001" green="0.28627450980000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" id="3xd-1u-Ndx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2VN-ae-KAr"/>
+                        <color key="backgroundColor" red="0.63529411759999999" green="0.69803921570000005" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MhK-d5-kOf" firstAttribute="trailing" secondItem="2VN-ae-KAr" secondAttribute="trailing" id="3R6-u7-gy6"/>
+                            <constraint firstItem="2VN-ae-KAr" firstAttribute="bottom" secondItem="ewN-UE-bie" secondAttribute="bottom" constant="54" id="HCi-8o-qPx"/>
+                            <constraint firstAttribute="bottom" secondItem="MhK-d5-kOf" secondAttribute="bottom" id="PhW-0c-879"/>
+                            <constraint firstItem="FxZ-a2-F0Z" firstAttribute="leading" secondItem="2VN-ae-KAr" secondAttribute="leading" constant="54" id="R2s-bb-jJ0"/>
+                            <constraint firstItem="2VN-ae-KAr" firstAttribute="bottom" secondItem="FxZ-a2-F0Z" secondAttribute="bottom" constant="54" id="YDx-Ul-DHh"/>
+                            <constraint firstItem="MhK-d5-kOf" firstAttribute="top" secondItem="IGR-2S-xfJ" secondAttribute="top" id="cU7-fk-fe6"/>
+                            <constraint firstItem="MhK-d5-kOf" firstAttribute="leading" secondItem="2VN-ae-KAr" secondAttribute="leading" id="iZM-Ky-kG7"/>
+                            <constraint firstItem="2VN-ae-KAr" firstAttribute="trailing" secondItem="ewN-UE-bie" secondAttribute="trailing" constant="46" id="kCZ-Wp-Wth"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLI-Ll-fFQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-913.04347826086962" y="108.48214285714285"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AthenaHacks2022" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-6N-pLg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rMz-6N-pLg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7s-60-xXX">
-                                <rect key="frame" x="132" y="770" width="150" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Tagged!">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuL-NU-Mjs">
+                                <rect key="frame" x="103" y="739" width="208" height="56"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Tag!">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
-                                    <color key="baseBackgroundColor" red="1" green="0.2339373911" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MuL-NU-Mjs">
-                                <rect key="frame" x="132" y="770" width="150" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Tagged!">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="35"/>
-                                    <color key="baseBackgroundColor" red="1" green="0.2339373911" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseForegroundColor" red="0.96762327120000002" green="1" blue="0.97840763100000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseBackgroundColor" red="0.28627450980392155" green="0.77254901960784317" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="taggedButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7gh-SD-9LX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wC5-ea-DCl">
+                                <rect key="frame" x="333" y="752" width="51" height="31"/>
+                                <buttonConfiguration key="configuration" style="gray">
+                                    <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
+                                    <attributedString key="attributedTitle"/>
+                                    <color key="baseForegroundColor" red="0.2196078431372549" green="0.28627450980392155" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.63529411764705879" green="0.69803921568627447" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKo-l6-KgJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Epz-6b-YCh">
+                                <rect key="frame" x="20" y="0.0" width="66" height="32.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="HELP">
+                                            <attributes>
+                                                <font key="NSFont" size="16" name="Helvetica"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="wC5-ea-DCl" firstAttribute="leading" secondItem="MuL-NU-Mjs" secondAttribute="trailing" constant="22" id="AQE-gA-9lJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wC5-ea-DCl" secondAttribute="trailing" constant="30" id="HAW-8g-pcW"/>
                             <constraint firstItem="rMz-6N-pLg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="M8A-3e-a3W"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MuL-NU-Mjs" secondAttribute="trailing" constant="103" id="Plb-51-Jgh"/>
+                            <constraint firstItem="Epz-6b-YCh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Pyd-Ia-60K"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wC5-ea-DCl" secondAttribute="bottom" constant="25" id="SHy-wq-8ze"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MuL-NU-Mjs" secondAttribute="bottom" constant="13" id="Shi-i6-rFe"/>
                             <constraint firstAttribute="bottom" secondItem="rMz-6N-pLg" secondAttribute="bottom" id="VFc-GF-qvn"/>
+                            <constraint firstItem="Epz-6b-YCh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="f7z-ol-wFC"/>
                             <constraint firstItem="rMz-6N-pLg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="m7a-Ez-mb8"/>
                             <constraint firstItem="rMz-6N-pLg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wVr-dd-Dfn"/>
+                            <constraint firstItem="MuL-NU-Mjs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="103" id="zxW-p6-K7z"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gbZ-oN-Aia"/>
+                    <connections>
+                        <outlet property="mapView" destination="rMz-6N-pLg" id="4Pz-On-bek"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="82.366071428571431"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8AF-Eq-Q1k"/>
+    </inferredMetricsTieBreakers>
     <resources>
+        <image name="Load Screen" width="375" height="812"/>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
