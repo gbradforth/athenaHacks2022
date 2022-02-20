@@ -25,8 +25,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    
-
     @IBAction func taggedButtonPressed(_ sender: UIButton) {
         //if (!inOwnTerritory)
             //player.tagged = true
@@ -59,6 +57,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 2000)
         mapView.setCameraZoomRange(zoomRange, animated: true)
+        
+        mapView.addOverlay(MKCircle(center: location.coordinate, radius: 500))
 
     }
       
@@ -155,7 +155,6 @@ private extension MKMapView {
 //modified from MapKit tutorial: https://www.raywenderlich.com/7738344-mapkit-tutorial-getting-started
 extension ViewController: MKMapViewDelegate {
     /*
-    // mapView(_:viewFor:) gets called for every annotation you add to the map — like tableView(_:cellForRowAt:) when working with table views — to return the view for each annotation.
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // make sure the annotation is a User obj
         guard let annotation = annotation as? Player else {
@@ -181,5 +180,11 @@ extension ViewController: MKMapViewDelegate {
         return view
     }
     */
-
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = overlay as? MKCircle {
+            let circleRenderer = MKCircleRenderer(circle: overlay)
+            return circleRenderer
+        }
+        return MKPolylineRenderer();
+    }
 }
